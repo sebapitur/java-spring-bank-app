@@ -5,4 +5,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <bean id="myBank" class="com.luxoft.bankapp.service.BankingImpl" autowire="byType">
+    </bean>
+    <bean id="myClientRepository" class="com.luxoft.bankapp.service.storage.MapClientRepository">
+    </bean>
+    <bean id="myBankReportService" class="com.luxoft.bankapp.service.BankReportServiceImpl" autowire="byType">
+    </bean>
 </beans>
