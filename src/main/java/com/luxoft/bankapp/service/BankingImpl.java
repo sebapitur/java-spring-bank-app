@@ -4,6 +4,8 @@ import com.luxoft.bankapp.exceptions.AccountNotFoundException;
 import com.luxoft.bankapp.exceptions.ClientNotFoundException;
 import com.luxoft.bankapp.model.*;
 import com.luxoft.bankapp.service.storage.ClientRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -113,6 +115,7 @@ public class BankingImpl implements Banking {
         to.deposit(amount);
     }
 
+    @Autowired
     public void setRepository(ClientRepository repository) {
 
         this.repository = repository;
