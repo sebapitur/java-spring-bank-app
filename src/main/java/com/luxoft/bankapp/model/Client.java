@@ -3,6 +3,8 @@ package com.luxoft.bankapp.model;
 import com.luxoft.bankapp.exceptions.AccountNumberLimitException;
 import com.luxoft.bankapp.exceptions.ActiveAccountNotSet;
 import com.luxoft.bankapp.service.storage.ClientRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -24,6 +26,7 @@ public class Client {
 
     private String city;
 
+    @Autowired
     private ClientRepository repository;
 
     public Client() {
