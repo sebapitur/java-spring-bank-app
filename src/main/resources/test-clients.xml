@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="savingAccount1" class="com.luxoft.bankapp.model.SavingAccount">
+        <constructor-arg value="${save1}" />
+    </bean>
+    <bean id="checkingAccount1" class="com.luxoft.bankapp.model.CheckingAccount">
+        <constructor-arg value="${check1}" />
+    </bean>
+
+    <bean id="checkingAccount2" class="com.luxoft.bankapp.model.CheckingAccount">
+        <constructor-arg value="${check2}" />
+    </bean>
+
+    <bean id="maleGender" class="com.luxoft.bankapp.model.Client.Gender" factory-method="valueOf">
+        <constructor-arg value="MALE" />
+    </bean>
+
+    <bean id="client1" class="com.luxoft.bankapp.model.Client">
+        <property name="name" value="${client1}"/>
+        <property name="gender" ref="maleGender"/>
+        <property name="city" value="${city1}"/>
+        <property name="repository" ref="myClientRepository"/>
+        <property name="accounts">
+            <list>
+                <ref bean="checkingAccount1" />
+                <ref bean="savingAccount1" />
+            </list>
+        </property>
+    </bean>
+
+    <bean id="client2" class="com.luxoft.bankapp.model.Client">
+        <property name="name" value="${client2}"/>
+        <property name="gender" ref="maleGender"/>
+        <property name="city" value="${city2}"/>
+        <property name="repository" ref="myClientRepository"/>
+        <property name="accounts">
+            <list>
+                <ref bean="checkingAccount2" />
+            </list>
+        </property>
+    </bean>
+
+    <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer" primary="true">
+        <property name="location" value="clients.properties"/>
+    </bean>
+
+
+</beans>

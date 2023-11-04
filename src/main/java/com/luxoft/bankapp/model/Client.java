@@ -14,6 +14,10 @@ public class Client {
 
     private List<AbstractAccount> accounts = new ArrayList<>(2);
 
+    public void setAccounts(List<AbstractAccount> accounts) {
+        this.accounts = accounts;
+    }
+
     private AbstractAccount activeAccount;
 
     private Gender gender;

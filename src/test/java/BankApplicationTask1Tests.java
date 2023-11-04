@@ -33,13 +33,12 @@ public class BankApplicationTask1Tests {
     @BeforeEach
     public void init() {
         try {
-            BankApplication.class.getMethod("initialize", ApplicationContext.class).invoke(null, applicationContext);
+           BankApplication.initialize(applicationContext);
         } catch (Exception e) {
             // ignore
+            System.err.println("ERROR Initializing");
+            e.printStackTrace();
         }
-
-        // TODO you can replace code above with this when will have the method
-//        BankApplication.initialize(applicationContext);
     }
 
     @Test

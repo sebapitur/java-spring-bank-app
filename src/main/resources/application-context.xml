@@ -11,4 +11,5 @@
     </bean>
     <bean id="myBankReportService" class="com.luxoft.bankapp.service.BankReportServiceImpl" autowire="byType">
     </bean>
+    <import resource="test-clients.xml"/>
 </beans>
