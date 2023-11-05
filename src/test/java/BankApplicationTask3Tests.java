@@ -16,7 +16,7 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringJUnitConfig(locations = "classpath:test-clients.xml")
+@SpringJUnitConfig(classes = BankApplication.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class BankApplicationTask3Tests {
@@ -73,7 +73,7 @@ public class BankApplicationTask3Tests {
     public void placeholderConfigurerBeanConfiguration() {
         assertNotNull(placeholderConfigurer, "placeholderConfigurer bean should be configured");
 
-        PropertySource<?> localProperties = placeholderConfigurer.getAppliedPropertySources().get("localProperties");
+        PropertySource<?> localProperties = placeholderConfigurer.getAppliedPropertySources().get("environmentProperties");
         assertNotNull(localProperties, "You should configure PropertySourcesPlaceholderConfigurer bean");
 
         assertEquals("Jonny Bravo", localProperties.getProperty("client1"));
@@ -193,7 +193,7 @@ public class BankApplicationTask3Tests {
 
     @Test
     public void workWithExistingClientsTest() {
-        BankApplication.workWithExistingClients(banking);
+        BankApplication.workWithExistingClients(applicationContext);
 
         Client jonny = banking.getClient(CLIENT_NAMES[0]);
         assertEquals(4000, jonny.getActiveAccount().getBalance());
@@ -204,7 +204,7 @@ public class BankApplicationTask3Tests {
 
     @Test
     public void bankingServiceDemoTest() {
-        BankApplication.bankingServiceDemo(banking);
+        BankApplication.bankingServiceDemo(applicationContext);
 
         Client anna = banking.getClient(CLIENT_NAMES[2]);
         assertNotNull(anna, "banking should have client with name: " + CLIENT_NAMES[2]);
