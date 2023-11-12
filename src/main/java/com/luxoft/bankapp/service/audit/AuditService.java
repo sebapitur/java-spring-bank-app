@@ -22,8 +22,8 @@ public class AuditService implements Audit
     }
 
     @Override
-    @EventListener
-    public void auditOperation(DepositEvent event)
+    @EventListener(condition = "#event.amount >= @eventConditionFilter.withdrawalLimit")
+            public void auditOperation(DepositEvent event)
     {
         events.add(event);
         System.out.println("ACCOUNT ID: "
