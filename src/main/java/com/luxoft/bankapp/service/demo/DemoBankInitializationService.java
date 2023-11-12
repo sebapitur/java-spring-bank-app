@@ -31,5 +31,6 @@ public class DemoBankInitializationService implements BankInitializationService
         }
 
         feedService.loadFeed(new File(fileName));
+
     }
 }
